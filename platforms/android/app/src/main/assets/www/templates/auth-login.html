@@ -1,0 +1,31 @@
+<ion-view view-title="Login" cache-view="false" hide-nav-bar="true" class="auth-bg background-login">
+  <button class="button button-small top-btn" ng-click="viewReg()">
+    <i class="icon ion-pound"> </i> Register</button>
+  <div class="auth">
+    <div class="container animated fadeInUp">
+      <div class="list list-inset">
+        <label class="item item-input">
+          <input type="text" ng-model="username" placeholder="username">
+        </label>
+        <label class="item item-input">
+          <input type="password" ng-model="password" placeholder="password">
+        </label>
+        <label class="error-message">
+          {{errorMessage}}
+        </label>
+      </div>
+      <button class="button button-small button-full button-positive fb" ng-click="verifyAuth()">Login</button>
+      <button class="button button-small button-full button-positive fb" ng-click="viewHome()">Skip!</button>
+      <p class="ion-information-circled text-justified">
+          The posting key is used for posting and voting. It should be different from the active and owner keys.
+        </p>
+        <p class="ion-information-circled text-justified">
+          The active key is used to make transfers and place orders in the internal market.
+        </p>
+        <p class="ion-information-circled text-justified">
+          The owner key is the master key for the account and is required to change the other keys. The private key or password for
+          the owner key should be kept offline as much as possible.
+        </p>
+    </div>
+  </div>
+</ion-view>

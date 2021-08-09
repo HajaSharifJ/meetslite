@@ -1,0 +1,62 @@
+<ion-view view-title="{{tag}}">
+  <!-- do you want padding? -->
+  <ion-content class="padding light-gray-bg" ng-show="isLoaded">
+    <ion-refresher pulling-text="Loading..." on-refresh="doRefresh()">
+    </ion-refresher>
+    <div class="list ">
+      <div class="post" ng-repeat="post in posts track by $index">
+        <div class=" card desh-atom-card-4">
+
+          <!-- clickable contents - navigate to post view -->
+          <div ng-click="viewPost(post)">
+            <div class="item item-thumbnail-left item-text-wrap no-side-padding">
+              <img class="desh-atom-card desh-atom-card desh-atom-thumb small" fallback-src='../img/images/no_image.png' ng-src="{{post.profilePic}}"
+              />
+              <p class="post-header">
+                <b class="author">{{post.author}} </b> posted
+                <b class="post-title"> {{post.title}} </b>
+                <small class="time"> {{post.created | date}} </small>
+
+              </p>
+            </div>
+            <div class="item item-body no-padding" style="border:0">
+              <img ng-if="post.type ==='image'" class="full-image post-main" src="{{post.image}}" />
+              <iframe ng-if="post.type === 'video'" class="full-image post-main" src="{{post.video}}" frameborder="0" allowfullscreen></iframe>
+            </div>
+            <p class="post-description" ng-bind-html="post.shortBody"></p>
+            <div class="item">
+              <span style="backgroun-color:#ddd; padding-right:10px; font-size: 10px" ng-repeat="postTag in post._jsonData.tags">#{{postTag}}</span>
+            </div>
+          </div>
+
+          <!-- footer -->
+          <p class="post-footer" style="font-size: 11px">
+            <a class="subdued" ng-class="{'liked': post.like}" ng-click="post.showlikebar = !post.like && !post.showlikebar">
+              <span class="animated badge">
+                <i class="animated icon ion-thumbsup"></i>
+              </span> {{post.net_votes}} Likes <b>(${{post.pending_payout_value}})</b>
+            </a>
+            <a class="subdued ">
+              {{post.children}} Comments</a>
+            <a class="subdued">
+              <i class="icon ion-android-share"></i> Share</a>
+            <!-- <a class="subdued bookmark">
+              <i class="animated icon ion-bookmark" ng-class="{'marked': post.bookmarked}" ng-click="post.bookmarked = !post.bookmarked"></i>
+            </a> -->
+          </p>
+          <div ng-show="post.showlikebar" class="list">
+            <div class="item range range-positive">
+              <i ng-click="likePost(post)" class="animated icon ion-thumbsup"></i>
+              <input type="range" name="volume" min="0" max="100" ng-model="post.weight"> {{post.weight}}
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+    
+
+    <ion-infinite-scroll on-infinite="loadPosts()" distance="10%">
+    </ion-infinite-scroll>
+  </ion-content>
+</ion-view>

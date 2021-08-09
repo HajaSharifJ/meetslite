@@ -1,0 +1,101 @@
+<ion-view view-title="{{post.title}} ">
+  <ion-content class="padding post-content" ng-show="isLoaded">
+    <ion-refresher pulling-text="Loading..." on-refresh="doRefresh()">
+    </ion-refresher>
+    <div class="list" ng-show="isLoaded">
+      <div class="post fit-to-screen no-padding">
+        <div class="card">
+          <div class="item item-thumbnail-left item-text-wrap no-side-padding">
+            <img class="desh-atom-card desh-atom-card desh-atom-thumb small" fallback-src='../img/images/no_image.png' src="{{post.profilePic}}"
+            />
+            <p class="post-header">
+              <b class="author">{{post.author}} </b> posted
+              <b class="post-title"> {{post.title}} </b>
+              <small class="time"> {{post.datetime}} </small>
+            </p>
+          </div>
+          <div class="item item-body no-padding" style="border:0">
+            <img ng-if="post.type ==='image'" class="full-image post-main" src="{{post.image}}" />
+            <iframe ng-if="post.type === 'video'" class="full-image post-main" src="{{post.video}}" frameborder="0" allowfullscreen></iframe>
+            <p class="post-description" style="color: #515151;" ng-bind-html="post.body"></p>
+          </div>
+          <div class="item">
+            <span style="backgroun-color:#ddd; padding-right:10px; font-size: 10px" ng-repeat="postTag in post._jsonData.tags">#{{postTag}}</span>
+          </div>
+          <p class="post-footer" style="font-size: 11px">
+            <a class="subdued" ng-class="{'liked': post.like}" ng-click="post.showlikebar = !post.like && !post.showlikebar">
+              <span class="animated badge">
+                <i class="animated icon ion-thumbsup"></i>
+              </span> {{post.net_votes}} Likes <b>(${{post.pending_payout_value}})</b>
+            </a>
+
+
+            <a class="subdued ">
+              <b>{{post.commentCount}} </b>Comments</a>
+            <a class="subdued">
+              <i class="icon ion-android-share"></i> Share</a>
+            <a class="subdued bookmark">
+              <i class="animated icon ion-bookmark  " ng-class="{'marked': post.bookmarked}" ng-click="post.bookmarked = !post.bookmarked"></i>
+            </a>
+          </p>
+          <div ng-show="post.showlikebar" class="list">
+            <div class="item range range-positive">
+              <i ng-click="likePost(post)" class="animated icon ion-thumbsup"></i>
+              <input type="range" name="volume" min="0" max="100" ng-model="post.weight"> {{post.weight}}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <ion-list class="comments ">
+      <h4 class="no-padding">comments</h4>
+
+      <!-- Main comments are listed here -->
+      <ion-item ng-repeat="comment in comments track by $index" class="item-remove-animate item-text-wrap item-avatar desh-atom-card-4 no-side-borders"
+        type="item-text-wrap">
+        <img class="avatar desh-atom-card-2" fallback-src='../img/images/no_image.png' src="{{comment.profilePic}}">
+        <h4 class="commentedBy">{{comment.author}}</h4>
+        <span class="time">{{comment.created}}</span>
+        <p style="color:black" ng-bind-html="comment.body"></p>
+        <p class="replyCount">
+          <i class="icon ion-thumbsup like animated" ng-class="{'liked': comment.like}" ng-click="comment.showlikebar = !comment.like && !comment.showlikebar"> like </i>
+          <i class="icon ion-reply"> {{comment.children}} replies</i>
+        </p>
+        <div ng-show="comment.showlikebar" class="list">
+          <div class="item range range-positive">
+            <i ng-click="likePost(comment)" class="animated icon ion-thumbsup"></i>
+            <input type="range" name="volume" min="0" max="100" ng-model="comment.weight"> {{comment.weight}}
+          </div>
+        </div>
+
+
+
+        <!-- Subcomments should be here: start -->
+        <ion-list class="subComments" ng-if="comment.replyCount">
+          <ion-item ng-repeat="subComment in comment.replies track by $index" class="item-remove-animate item-text-wrap item-avatar  no-side-borders"
+            type="item-text-wrap">
+            <img class="avatar desh-atom-card-2" src="{{subComment.avatar}}">
+            <span class="time">{{comment.time}}</span>
+            <h4 class="commentedBy"> {{subComment.commentedBy}}</h4 <p>{{subComment.comment}}</p>
+            <p class="replyCount">
+              <i class="icon ion-thumbsup like animated" ng-class="{'liked': subComment.like}" ng-click="subComment.like = !subComment.like">
+                like </i>
+            </p>
+          </ion-item>
+        </ion-list>
+        <!-- Subcomments should be here: ends -->
+
+
+      </ion-item>
+    </ion-list>
+    <ion-infinite-scroll on-infinite="loadComments()" distance="50%">
+    </ion-infinite-scroll>
+  </ion-content>
+  <div class="bar bar-footer message-footer comment-footer ">
+
+    <label class="item item-input">
+      <input type="text" placeholder="Comment">
+    </label>
+    <button class="button icon-left ion-reply" style="    margin-left: 18px;"></button>
+  </div>
+</ion-view>

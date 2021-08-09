@@ -1,0 +1,31 @@
+<ion-view view-title="FB Messsanger">
+  <!-- do you want padding? -->
+  <ion-content scroll="false" class="padding">
+    <ion-item class="item item-divider removebg no-side-borders">
+      Your Friends' Messages
+    </ion-item>
+    <ion-scroll direction="x" class="no-side-borders desh-atom-card-2 fit-to-screen">
+      <div style="width: 100%"  class="button-bar button-outline">
+        <a ng-repeat="user in users track by $index" ui-sref="main.message" >
+          <img src="{{user.image}}" width="50" class="avatar margin desh-atom-card-2" /></a>
+      </div>
+    </ion-scroll>
+
+    <!-- content goes here -->
+    <ion-scroll direction="y" style="height:200%">
+      <ion-list  style="height:200%">
+        <ion-item class="item item-avatar no-side-borders fb-list" ui-sref="main.message" ng-repeat="message in messages track by $index">
+          <img src="{{message.avatar}}">
+          <img src="{{message.avatar}}" width="12" class="fb-small-avatar">
+          <h2>{{message.username}}</h2>
+          <p>{{message.message}}</p>
+          <p class="item-note fb-date-note">Aug 23</p>
+        </ion-item>
+        <ion-item style="visibility:hidden;padding-top:1000px" class="item item-avatar no-side-borders" >
+        </ion-item>
+      </ion-list>
+    </ion-scroll>
+
+
+  </ion-content>
+</ion-view>

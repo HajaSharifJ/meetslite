@@ -1,0 +1,31 @@
+<ion-view view-title="chat with Json">
+  <!-- do you want padding? -->
+  <ion-content class="padding">
+
+    <!-- content goes here -->
+    <ion-list class="message">
+      <ion-item class="item   item-text-wrap no-side-borders" ng-repeat="message in messages track by $index" ng-class="{ 'item-avatar-right': message.sender, 'item-avatar': !message.sender, 'margin-bottom': $last }" show-reorder="shouldShowReorder" can-swipe="listCanSwipe">
+        <img src="{{message.avatar}}" class="desh-atom-card-8">
+        <h5>{{message.username}}    <span class="item-note absolcute " style="font-size:10px">1 min ago</span></h5>
+        <p>{{message.message}}</p>
+        <ion-option-button class="button-assertive" ng-click="delete($index)">
+          <i class="icon ion-trash-b"></i>
+        </ion-option-button>
+        <ion-option-button class="button-info" ng-click="edit(message)">
+          <i class="icon ion-edit"></i>
+        </ion-option-button>
+      </ion-item>
+
+    </ion-list>
+
+
+  </ion-content>
+  <div class="bar bar-footer message-footer">
+    <button class="button message-footer-left ion-plus-round button-positive"></button>
+
+    <label class="item item-input">
+      <input type="text" placeholder="message">
+    </label>
+    <button class="button icon-left ion-android-send"></button>
+  </div>
+</ion-view>

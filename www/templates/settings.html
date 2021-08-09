@@ -1,0 +1,49 @@
+<ion-view view-title="Settings">
+  <!-- do you want padding? -->
+  <ion-content>
+
+    <!-- content goes here -->
+    <div class="list">
+
+      <div class="item item-divider">
+        App Settings
+      </div>
+
+      <li class="item item-toggle">
+        Push Notification
+        <label class="toggle toggle-assertive">
+          <input type="checkbox"  ng-model="true">
+          <div class="track">
+            <div class="handle"></div>
+          </div>
+        </label>
+      </li>
+      <li class="item item-toggle">
+        Track Location
+        <label class="toggle toggle-assertive">
+          <input type="checkbox" ng-model="true">
+          <div class="track">
+            <div class="handle"></div>
+          </div>
+        </label>
+      </li>
+      <ion-item class="item item-icon-left" href="https://forum.ionicframework.com/users/deshatom">
+        Rate This App
+        <i class="icon energized ion-ios-star"></i>
+      </ion-item>
+      <ion-item class="item item-icon-left"  href="https://forum.ionicframework.com/users/deshatom" >
+        Other apps
+        <i class="icon balanced ion-iphone"></i>
+      </ion-item>
+      <ion-item class="item item-icon-left"  href="https://forum.ionicframework.com/users/deshatom" >
+        Feedback
+        <i class="icon positive ion-chatbubbles"></i>
+      </ion-item>
+      <ion-item class="item item-icon-left"  ui-sref="main.debug" >
+        DEBUGG
+        <i class="icon assertive ion-bug"></i>
+      </ion-item>
+    </div>
+
+  </ion-content>
+</ion-view>

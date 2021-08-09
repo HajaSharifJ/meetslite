@@ -1,0 +1,20 @@
+<ion-view view-title="Bookmarks">
+  <!-- do you want padding? -->
+  <ion-content class="padding bookmark" ng-show="isLoaded">
+
+    <div class="list">
+
+      <ion-item class="item item-thumbnail-left item-text-wrap no-side-borders" ng-repeat="post in posts track by $index" >
+        <img ui-sref="main.post" src="{{post.avatar}}">
+        <h2 ui-sref="main.post">{{post.title}}</h2>
+        <span ui-sref="main.post" style="font-size:12px"> by <b>{{post.author}} </b>- {{post.datetime}}</span>
+
+<br />
+          <button class="button  icon ion-thumbsup button-clear " ng-class="post.like ? 'button-positive' : 'button-stable'" ng-click="post.like = !post.like"> <b style="color:gray">Like</b></button>
+          <button class="button  icon ion-share button-clear button-stable">Share</b></button>
+
+      </ion-item>
+    </div>
+
+  </ion-content>
+</ion-view>

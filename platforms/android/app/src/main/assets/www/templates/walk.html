@@ -1,0 +1,99 @@
+<ion-view view-title="walk" cache-view="false" hide-nav-bar="true">
+  <div class="walk">
+    <!-- walkthrough slider  body-->
+    <div class="walk-slider">
+      <div class="walk-top">
+        <img class="icon-sm animated fadeInLeft" ng-src="img/images/icon-sm.png" width="32">
+        <p class="animated fadeInRight">Steem Lite</p>
+      </div>
+      <ion-slide-box on-slide-changed="slideHasChanged($index)">
+        <ion-slide>
+
+          <div class="body">
+            <div class="body-title animated fadeInUp" >
+              <h5>Steem Lite is a lite weight mobile based social application runs on steemit blockchain.</h5>
+            </div>
+            <img class="icon-lg animated fadeInUp" ng-class="{'fadeInUp': slide.one, 'fadeOutDown': !slide.one}" ng-src="img/images/icon-lg.png">
+          </div>
+        </ion-slide>
+        <ion-slide>
+          <div class="box red">
+            <div class="body">
+              <div class="body-title animated fadeInUp">
+                <h5>Steem Lite lets you Earn Real Money!!! </h5>
+              </div>
+              <div class="walk-box walk-box1">
+                <img class="avatar animated" src="img/images/avatar1.png"  ng-class="{'zoomIn':  slide.two, 'bounceOutRight': !slide.two}"  />
+                <div class="lines">
+                  <p class="line1 animated" ng-class="{'slideInRight':  slide.two, 'bounceOutRight': !slide.two}" ></p>
+                  <p class="line2"></p>
+                  <p class="line3 animated" ng-class="{'slideInRight':  slide.two}" ></p>
+                </div>
+
+              </div>
+              <div class="walk-box walk-box2">
+                <img class="avatar right" src="img/images/avatar2.png" />
+                <div class="lines">
+                  <p class="line1 animated" ng-class="{'slideInRight':  slide.two, 'bounceOutRight': !slide.two}" ></p>
+                  <p class="line2"></p>
+                  <p class="line3 animated" ng-class="{'slideInRight':  slide.two}" ></p>
+                </div>
+              </div>
+              <div class="walk-box walk-box3">
+                <img class="avatar animated" src="img/images/avatar3.png"  ng-class="{'zoomIn':  slide.two, 'bounceOutRight': !slide.two}"  />
+                <div class="lines animated animation-delay fadeInRight">
+                  <p class="line1 animated" ng-class="{'slideInRight':  slide.two, 'bounceOutRight': !slide.two}" ></p>
+                  <p class="line2"></p>
+                  <p class="line3 animated" ng-class="{'slideInRight':  slide.two}" ></p>
+                </div>
+              </div>
+              <div class="walk-box walk-box4">
+                <img class="avatar right animated" src="img/images/avatar4.png"  />
+                <div class="lines">
+                  <p class="line1 animated" ng-class="{'slideInRight':  slide.two, 'bounceOutRight': !slide.two}" ></p>
+                  <p class="line2"></p>
+                  <p class="line3 animated" ng-class="{'slideInRight':  slide.two }" ></p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </ion-slide>
+        <ion-slide>
+
+          <div class="body">
+            <div class="body-title animated fadeInUp">
+              <h5>On the Blockchain based Social Network through</h5>
+            </div>
+            <img align="middle" ng-class="{'pulse': currentSlideIndex==1}" style="left: 0px; top: 80px; width:100%; z-index: -10; position: absolute; opacity:0.75" ng-src="img/images/m4.jpg" />
+            <div class="center">
+
+              <span class="walk-marker walk-marker-1 animated" ng-class="{'bounceInDown':  slide.three, 'hide' :!slide.three}">D
+                <span class="ppOver  above    animated" ng-class="{'fadeInUp':  slide.three, 'hide' :!slide.three}">
+                <img style="float:left" class="avatar" src="img/images/avatar1.png" width="32" />
+                Blogging!!!</span></span>
+
+
+              <span class="walk-marker walk-marker-2   animated" ng-class="{'bounceInDown':  slide.three, 'hide' :!slide.three}">A
+                <div class="ppOver above animated" ng-class="{'fadeInUp':  slide.three, 'hide' :!slide.three}" >
+                  <img style="float:left" class="avatar" src="img/images/avatar2.png" width="32" />
+                  Commenting!!!
+                </div>
+              </span>
+
+              <span class="walk-marker walk-marker-3 animated" ng-class="{'bounceInDown':  slide.three, 'hide' :!slide.three}">R <span class="ppOver above   animated" ng-class="{'fadeInUp':  slide.three, 'hide' :!slide.three}" >
+                    <img style="float:left" class="avatar" src="img/images/avatar3.png" width="32" />
+                    Upvoting!!!</span></span>
+
+            </div>
+          </div>
+        </ion-slide>
+
+      </ion-slide-box>
+    </div>
+
+    <!-- walkthrough bottom -->
+    <div class="walk-bottom">
+      <a class="button button-full" ng-click="onSkip()">skip me!</a>
+    </div>
+  </div>
+</ion-view>
